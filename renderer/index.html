@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Browser</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============== 自定义标题栏 ============== -->
+<div id="title-bar" class="title-bar">
+  <div class="title-bar-drag">
+    <span class="title-bar-text">AI Browser</span>
+  </div>
+  <div class="title-bar-actions">
+    <button id="btn-minimize" class="title-btn" title="Minimize">&#x2014;</button>
+    <button id="btn-maximize" class="title-btn" title="Maximize">&#x25A1;</button>
+    <button id="btn-close" class="title-btn title-btn-close" title="Close">&#x2715;</button>
+  </div>
+</div>
+
+<!-- ============== 主体（侧边栏+主区域） ============== -->
+<div id="body-wrap" class="body-wrap">
+
+<!-- ============== 侧边栏 ============== -->
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-brand">AI Browser</div>
+  <nav class="sidebar-nav">
+    <button class="sidebar-btn" data-url="https://www.doubao.com/chat/" data-name="豆包">
+      <span class="btn-icon">🫘</span>
+      <span class="btn-label">豆包</span>
+    </button>
+    <button class="sidebar-btn" data-url="https://kimi.moonshot.cn/" data-name="Kimi">
+      <span class="btn-icon">🌙</span>
+      <span class="btn-label">Kimi</span>
+    </button>
+    <button class="sidebar-btn" data-url="https://chat.deepseek.com/" data-name="DeepSeek">
+      <span class="btn-icon">🐋</span>
+      <span class="btn-label">DeepSeek</span>
+    </button>
+    <button class="sidebar-btn" data-url="https://tongyi.aliyun.com/" data-name="通义千问">
+      <span class="btn-icon">☁️</span>
+      <span class="btn-label">通义千问</span>
+    </button>
+    <button class="sidebar-btn" data-url="https://yiyan.baidu.com/" data-name="文心一言">
+      <span class="btn-icon">🧠</span>
+      <span class="btn-label">文心一言</span>
+    </button>
+    <button class="sidebar-btn" data-url="https://chatglm.cn/" data-name="智谱清言">
+      <span class="btn-icon">💎</span>
+      <span class="btn-label">智谱清言</span>
+    </button>
+    <button class="sidebar-btn" data-url="https://www.wenxiaobai.com/" data-name="问小白">
+      <span class="btn-icon">⚪</span>
+      <span class="btn-label">问小白</span>
+    </button>
+  </nav>
+</aside>
+
+<!-- ============== 主区域 ============== -->
+<main id="main-area" class="main-area">
+
+  <!-- 工具栏 -->
+  <div id="toolbar" class="toolbar">
+    <button id="btn-back" class="toolbar-btn" title="后退" disabled>&#x25C0;</button>
+    <button id="btn-forward" class="toolbar-btn" title="前进" disabled>&#x25B6;</button>
+    <button id="btn-refresh" class="toolbar-btn" title="刷新">&#x21BB;</button>
+    <button id="btn-home" class="toolbar-btn" title="主页">&#x2302;</button>
+    <input id="address-bar" class="address-bar" type="text" placeholder="输入网址后按回车访问..." />
+  </div>
+
+  <!-- 标签栏 + 新建按钮 -->
+  <div id="tab-bar" class="tab-bar">
+    <div id="tab-strip" class="tab-strip"></div>
+    <button id="btn-new-tab" class="btn-new-tab" title="新建标签">+</button>
+  </div>
+
+  <!-- WebView 容器 -->
+  <div id="webview-container" class="webview-container">
+    <!-- 加载遮罩（切换时即显示，加载完成后隐藏） -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+      <div class="loading-content">
+        <div class="spinner"></div>
+        <div class="loading-text">正在切换...</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</div><!-- /body-wrap -->
+
+<script src="app.js"></script>
+</body>
+</html>

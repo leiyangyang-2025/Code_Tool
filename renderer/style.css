@@ -1,0 +1,437 @@
+/* ===================== 全局深色主题 ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-sidebar: #0f0f1a;
+  --bg-main: #1a1a2e;
+  --bg-toolbar: #16213e;
+  --bg-tab: #1a1a2e;
+  --bg-tab-active: #0f3460;
+  --bg-btn: #16213e;
+  --bg-btn-hover: #0f3460;
+  --bg-btn-active: #e94560;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0b0;
+  --text-muted: #606080;
+  --border: #2a2a4a;
+  --accent: #e94560;
+  --accent-hover: #ff6b81;
+  --radius: 6px;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+  background: var(--bg-main);
+  color: var(--text-primary);
+}
+
+/* ===================== 布局 ===================== */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- 自定义标题栏 ---------- */
+.title-bar {
+  width: 100%;
+  height: 32px;
+  min-height: 32px;
+  background: #0a0a14;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  z-index: 100;
+}
+
+.title-bar-drag {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  -webkit-app-region: drag;
+}
+
+.title-bar-text {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.title-bar-actions {
+  display: flex;
+  height: 100%;
+  -webkit-app-region: no-drag;
+}
+
+.title-btn {
+  width: 46px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s ease;
+}
+
+.title-btn:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+.title-btn-close:hover {
+  background: #e81123;
+  color: #fff;
+}
+
+/* ---------- 主体包裹 ---------- */
+.body-wrap {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+/* ---------- 侧边栏 ---------- */
+.sidebar {
+  width: 200px;
+  min-width: 200px;
+  height: 100%;
+  background: var(--bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  user-select: none;
+}
+
+.sidebar-brand {
+  padding: 18px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  -webkit-app-region: drag;
+}
+
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 4px;
+  overflow-y: auto;
+  -webkit-app-region: no-drag;
+}
+
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar-btn:hover {
+  background: var(--bg-btn-hover);
+  color: var(--text-primary);
+}
+
+.sidebar-btn:active {
+  background: var(--bg-btn-active);
+  color: #fff;
+}
+
+.sidebar-btn .btn-icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebar-btn .btn-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- 主区域 ---------- */
+.main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+/* ===================== 工具栏 ===================== */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: var(--bg-toolbar);
+  border-bottom: 1px solid var(--border);
+  height: 44px;
+  min-height: 44px;
+}
+
+.toolbar-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.toolbar-btn:hover:not(:disabled) {
+  background: var(--bg-btn-hover);
+  color: var(--text-primary);
+}
+
+.toolbar-btn:active:not(:disabled) {
+  background: var(--accent);
+  color: #fff;
+}
+
+.toolbar-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.address-bar {
+  flex: 1;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s ease;
+  min-width: 0;
+}
+
+.address-bar:focus {
+  border-color: var(--accent);
+}
+
+.address-bar::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===================== 标签栏 ===================== */
+.tab-bar {
+  display: flex;
+  align-items: center;
+  background: var(--bg-tab);
+  border-bottom: 1px solid var(--border);
+  height: 36px;
+  min-height: 36px;
+}
+
+.tab-strip {
+  flex: 1;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+.tab-strip::-webkit-scrollbar {
+  height: 3px;
+}
+.tab-strip::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 100%;
+  min-width: 60px;
+  max-width: 180px;
+  border: none;
+  border-right: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.12s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.tab-item:hover {
+  background: rgba(233, 69, 96, 0.08);
+  color: var(--text-primary);
+}
+
+.tab-item.active {
+  background: var(--bg-tab-active);
+  color: #fff;
+}
+
+.tab-item .tab-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.tab-item .tab-close {
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: all 0.12s ease;
+}
+
+.tab-item .tab-close:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-new-tab {
+  width: 32px;
+  min-width: 32px;
+  height: 100%;
+  border: none;
+  border-left: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.12s ease;
+  flex-shrink: 0;
+}
+
+.btn-new-tab:hover {
+  background: var(--bg-btn-hover);
+  color: #fff;
+}
+
+/* ===================== WebView 容器 ===================== */
+.webview-container {
+  flex: 1;
+  position: relative;
+  background: var(--bg-main);
+  overflow: hidden;
+}
+
+.webview-container webview {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.webview-container webview.active {
+  display: flex;
+}
+
+/* ===================== 加载动画（异步切换遮罩） ===================== */
+.loading-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-main);
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.loading-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  animation: pulse-text 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ===================== 侧边栏激活状态 ===================== */
+.sidebar-btn.active {
+  background: var(--bg-btn-active) !important;
+  color: #fff !important;
+  box-shadow: 0 0 12px rgba(233, 69, 96, 0.3);
+}
